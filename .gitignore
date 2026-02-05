@@ -1,6 +1,11 @@
 # PDF and Data Folders
 Positive_PMC_Supplementary/
+Positive_PMC_PDFs/
+Positive_PMC_TSV_Files/
 1012_Positive_PMC_Full_Text_and_Supplementary/
+Download_1012_Positive_PMC_Full_Text_and_Supplementary/Positive_PMC_PDFs/
+Download_1012_Positive_PMC_Full_Text_and_Supplementary/Positive_PMC_Supplementary/
+Download_1012_Positive_PMC_Full_Text_and_Supplementary/Positive_PMC_TSV_Files/
 Copilot_Processed_Datasets_JSON/
 DOME_Registry_JSON_Files/
 DOME_Registry_TSV_Files/
