@@ -1,0 +1,13 @@
+# PDF and Data Folders
+Positive_PMC_Supplementary/
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# System
+.DS_Store
+Human_Evaluation_Interface/30_human_evaluation/
