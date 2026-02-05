@@ -1,0 +1,144 @@
+[
+  {
+    "_id": {
+      "$oid": "63a25db2e8edf6ce46f6e84b"
+    },
+    "dataset": {
+      "availability": "Yes, The MSI data have been deposited to the ProteomeXchange Consortium (http://proteomecentral.proteomexchange.org) via the iProX partner repository with the dataset identifier PXD038876.",
+      "provenance": "DESI-MSI experiments of whole mouse kidney and renal tumor specimens. Two MSI datasets and their corresponding H&E microscopy images.  The MSI data have been deposited to the ProteomeXchange Consortium (http://proteomecentral.proteomexchange.org) via the iProX partner repository with the dataset identifier PXD038876.",
+      "redundancy": "Not applicable ",
+      "splits": "Not applicable ",
+      "done": 4,
+      "skip": 0
+    },
+    "evaluation": {
+      "availability": "No",
+      "comparison": "Yes, our method was compared with two internal validation measures: (1) segmentation was evaluated by how closely it resembled the low-dimension overview of the high\u2010dimensional molecular content of MSI data obtained by nonlinear dimension reduction techniques (here we used UMAP). The resemblance between the UMAP image and the segmentation maps was measured by applying a Canny edge detector to both and computing their edge correlation.  (2) the Davies\u2013Bouldin index (DBI) was used to find the optimal segmentation for MSI data. DBI measures the ratio of within-cluster distances (the measure of intra-cluster compactness) to between-cluster distances (the measure of inter-cluster separation), so a smaller DBI indicates better-defined clusters and thus supposedly better segmentation. ",
+      "confidence": "not applicable ",
+      "measure": "Cohen's kappa score between MSI- and Histology-segmentation results",
+      "method": "A multimodal fusion-based method was proposed in our manuscript. Visual evaluation by an expert was also performed.",
+      "done": 4,
+      "skip": 1
+    },
+    "model": {
+      "availability": "Yes, available at https://github.com/guoang4github/ROIforMSI/ (Licence: GPL-3)",
+      "duration": "less than 1 min",
+      "interpretability": "Not applicable",
+      "output": "Clustering ",
+      "done": 4,
+      "skip": 0
+    },
+    "optimization": {
+      "algorithm": "Spectral Clustering algorithm with  n_clusters=3 to 8, affinity='cosine' or 'nearest neighbors', n_components=5, assign_labels='kmeans'",
+      "config": "Not applicable ",
+      "encoding": "An inner layer (conv5-block32-concat) of DenseNet 201 was used as our extractor of choice to encode the stain color and morphology of a 2D H&E image tile into a set of informative histomorphological features (HF). To stay in keeping with ImageNet, our input tiles had to be resized to [224, 224, 3] through bilinear interpolation and each color channel had to be centered to zero . Eventually, the output arrays after the concatenation operation at the conv5_block32 layer of DenseNet201 were 2-D globally average-pooled, Min-Max scaled, and reshaped as a \"histomorphological feature (HF) spectrum\" of 1,920 variables.",
+      "features": "HF data cube had 1920 histomorphological features. For the MSI data of whole kidney, the number of m/z variables was 87. For the tumor data, the number of m/z variables was 89. Feature selection was performed to include only the ions that had a stronger signal in the foreground tissue areas than the background glass substrates.",
+      "fitting": "Kmeans",
+      "meta": "No",
+      "parameters": "n_clusters were selected objectively by a multimodal fusion method proposed in our manuscript, the affinity and n_components were empirically configured to produce visually less fragmented regions ",
+      "regularization": "Not applicable ",
+      "done": 7,
+      "skip": 1
+    },
+    "user": {
+      "$oid": "63992de57417daebc3c00985"
+    },
+    "publication": {
+      "pmid": 37039115,
+      "pmcid": "PMC10087011",
+      "updated": 0,
+      "authors": "Guo A, Chen Z, Li F, Luo Q.",
+      "journal": "GigaScience",
+      "title": "Delineating regions of interest for mass spectrometry imaging by multimodally corroborated spatial segmentation.",
+      "doi": "10.1093/gigascience/giad021",
+      "year": 2023,
+      "done": 0,
+      "skip": 0,
+      "tags": true
+    },
+    "public": 1.0,
+    "created": {
+      "$date": "2022-12-21T01:13:22.874Z"
+    },
+    "updated": {
+      "$date": 0
+    },
+    "uuid": "8c0c94cd-3172-4f65-92b0-b997742324e0",
+    "reviewState": "undefined",
+    "shortid": "ck60ijuxvo",
+    "update": 0,
+    "__v": 0,
+    "score": 0
+  },
+  {
+    "_id": {
+      "$oid": "643fee35bcc9ba89a8f2c763"
+    },
+    "dataset": {
+      "availability": "Training and test datasets were as split as possible, and the same goes for training and validation. Datasets are all available on FigShare and can also be re-created easily from the publicly available PRIDE datasets.",
+      "provenance": "The datasets have been sourced from PRIDE, the largest repository for proteomics based MS datasets.\nThe overarching datasets consists of 151M datapoints, from which multiple smaller datasets have been extracted from 750K to 2M datapoints randomly sampled.\nDue to using pre-existing data only, some data points have been used in previous papers (which is also key part of the manuscript)",
+      "redundancy": "The datasets were split randomly based on sequence and raw files. This means that the hold-out test dataset was split based on entire projects from PRIDE to make sure the test set were at heterogenous from the training set as possible. Then we split training and validation based on unique sequences in the remaining datasets. This also means that a perfect 70:20:10 split is not possible, but that's what we aimed for when randomly splitting. \nThis is normally how the split is done in the field.",
+      "splits": "Large datasets was split into 12 smaller datasets randomly based on queries. Splits ranged from 750K to 2M in size, and may have overlaps.\nFor training and testing each dataset was split into training, validation and hold-out test datasets at a ~70:20:10 split ratio.\nThe distribution of datapoints is roughly normally distributed for most subsets, except for the m/z range filter ones, where the nature of the split will cause the dataset to be largely located at the normally lower populated ends on the normal distributions.",
+      "done": 4,
+      "skip": 0
+    },
+    "evaluation": {
+      "availability": "All models, code and output files are available on FigShare:\nhttps://figshare.com/articles/dataset/Rehfeldt_et_al_data_reference/21680669",
+      "comparison": "Since the field has no standard metric, methods or benchmarking datasets we did not test to other models or datasets. ",
+      "confidence": "No. We did compare to a dataset of random retention times to show that our modes outperform random guessing, but we cannot compare to other models or metrics as no such baseline exists in the field.",
+      "measure": "We used the TimeDelta metric which was available in the python package here: https://dlomix.readthedocs.io/en/latest/_modules/dlomix/eval/rt_eval.html#TimeDeltaMetric",
+      "method": "hold-out datasets randomly sampled to ensure as unbiased testing as possible",
+      "done": 5,
+      "skip": 0
+    },
+    "model": {
+      "availability": "Yes the source code for our testing is here: https://gitlab.com/tjobbertjob/ms-review-paper\nwith the underlying code being available here: https://gitlab.com/roettgerlab/ms2ai",
+      "duration": "between 2-10 hours for training. Minutes for testing",
+      "interpretability": "The model architecture is explained with code to see the entire model. We also published all weights for all trained models.\nHowever, the nature of NNs makes them hard to interpret, but we made everything as transparent as possible.",
+      "output": "regression",
+      "done": 4,
+      "skip": 0
+    },
+    "optimization": {
+      "algorithm": "We used a state-of-the-art neural network in the field and thus did not construct a NN ourselves. Our manuscript does not focus on the optimization of the network but a comparison of the underlying data. We used the PROSIT retention time model.",
+      "config": "All parameters, splits, seeds and so on are available in the source code\nhttps://gitlab.com/tjobbertjob/ms-review-paper",
+      "encoding": "The retention time was normalized for each file between the first and last identified peptides to mimic, the otherwise unachievable, iRT computations performed in the original PROSIT paper.",
+      "features": "1. The sequence of the peptide.",
+      "fitting": "As our training points are >> our features, we tested first on a dataset of random retention times based on which we can compare if the model actually learns the data. We then trained and refined 12+ models and they were comparable to each other. While we cannot rule out under-fitting, its unlikely that the model was capable of achieving better results. ",
+      "meta": "No\n",
+      "parameters": "The only parameters we changed were the epochs, as well as adding an early stopping patience. All other parameters were as described in the original paper of the same model. We changed these parameters as the default epochs was not enough time to converge our training.",
+      "regularization": "Due to the computation needs to train and refine so many models, we choose to add an early stopping of 20 epochs to the model. This was partially to avoid overfitting, and partially to reduce the wasted computation time. No other regularization methods were added by us.",
+      "done": 8,
+      "skip": 0
+    },
+    "user": {
+      "$oid": "643fe8a892c76639b81bfe5f"
+    },
+    "publication": {
+      "pmid": 37983748,
+      "pmcid": "PMC10659119",
+      "updated": 0,
+      "authors": "Rehfeldt TG, Krawczyk K, Echers SG, Marcatili P, Palczynski P, R\u00f6ttger R, Schw\u00e4mmle V.",
+      "journal": "GigaScience",
+      "title": "Variability analysis of LC-MS experimental factors and their impact on machine learning.",
+      "doi": "10.1093/gigascience/giad096",
+      "year": 2023,
+      "done": 0,
+      "skip": 0,
+      "tags": true
+    },
+    "public": 1.0,
+    "created": {
+      "$date": "2023-04-19T13:35:49.122Z"
+    },
+    "updated": {
+      "$date": 0
+    },
+    "uuid": "399608f3-8b79-4df1-ac09-1a9aa6e1947d",
+    "reviewState": "undefined",
+    "shortid": "3glxd6418e",
+    "update": 0,
+    "__v": 0,
+    "score": 0
+  }
+]
