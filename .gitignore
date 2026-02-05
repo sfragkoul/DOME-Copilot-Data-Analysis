@@ -1,8 +1,12 @@
 # PDF and Data Folders
 Positive_PMC_Supplementary/
 1012_Positive_PMC_Full_Text_and_Supplementary/
-Copilot_Processed_Datasets_JSON/*
-
+Copilot_Processed_Datasets_JSON/
+DOME_Registry_JSON_Files/
+DOME_Registry_TSV_Files/
+DOME_Registry_PMC_PDFs/
+DOME_Registry_PMC_Supplementary/
+DOME_Registry_Remediation/
 # Python
 __pycache__/
 *.pyc
