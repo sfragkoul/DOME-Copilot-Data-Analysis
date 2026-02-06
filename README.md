@@ -72,7 +72,4 @@ This code supports ongoing doctoral research into the reproducibility of machine
 See [LICENSE.md](LICENSE.md) for full legal details.
 
 ## 📧 Contact
-
-**Gavin Farrell**  
-PhD Researcher  
-University of Glasgow
+contact@dome-ml.org
